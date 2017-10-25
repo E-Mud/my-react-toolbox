@@ -1,0 +1,58 @@
+padded(base, attr, mult)
+  padding-{attr}: base * mult
+
+margined(base, attr, mult)
+  margin-{attr}: base * mult
+
+
+register-sizes(base, sizes)
+  for size, mult in sizes
+    .padding-{size}
+      padded(base, top, mult)
+      padded(base, right, mult)
+      padded(base, bottom, mult)
+      padded(base, left, mult)
+
+    .padding-{size}-horizontal
+      padded(base, right, mult)
+      padded(base, left, mult)
+
+    .padding-{size}-vertical
+      padded(base, top, mult)
+      padded(base, bottom, mult)
+
+    .margin-{size}
+      margined(base, top, mult)
+      margined(base, right, mult)
+      margined(base, bottom, mult)
+      margined(base, left, mult)
+
+    .margin-{size}-horizontal
+      margined(base, right, mult)
+      margined(base, left, mult)
+
+    .margin-{size}-vertical
+      margined(base, top, mult)
+      margined(base, bottom, mult)
+
+    for dir in (top right bottom left)
+      .padding-{size}-{dir}
+        padded(base, dir, mult)
+
+      .margin-{size}-{dir}
+        margined(base, dir, mult)
+
+
+
+$baseSpace = 0.8rem
+
+$sizes = {
+  base: 1
+  none: 0
+  small: 0.5
+  large: 2
+  xlarge: 3
+  huge: 4
+}
+
+register-sizes($baseSpace, $sizes)

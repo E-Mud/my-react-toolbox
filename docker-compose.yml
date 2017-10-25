@@ -1,0 +1,15 @@
+version: '2'
+services:
+  storybook:
+    build: .
+    command: npm run storybook
+    volumes_from:
+      - watch
+    ports:
+      - 8008:6006
+  watch:
+    build: .
+    command: npm run build:watch
+    volumes:
+      - .:/app
+      - /app/node_modules

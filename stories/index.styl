@@ -1,0 +1,56 @@
+@require '../lib/styles/index.styl'
+@require './fonts.styl'
+
+$primary = #0288D1
+$primaryLight = #008891
+$primaryDark = #0F3057
+
+$warn = #DA2924
+$warnLight = #EA524E
+$warnDark = #AE1511
+$background = #CDCBA6
+
+
+darkColors = {
+  main: $mainText,
+  secondary: $secondaryText,
+  disabled: $disabledText
+}
+
+whiteColors = {
+  main: $mainWhiteText,
+  secondary: $secondaryWhiteText,
+  disabled: $disabledWhiteText
+}
+
+fonts = {
+  light: 'Light',
+  regular: 'Regular',
+  medium: 'Medium',
+  bold: 'Bold'
+}
+
+register-typo(darkColors, whiteColors, fonts)
+
+body
+  @extend .text-body-1
+
+
+.sup
+  text-light()
+
+
+// Buttons
+button
+  @extend .text-button
+  flat-button($black)
+
+  &.raised
+    raised-button()
+
+  &.primary
+    flat-button($primary)
+
+  &.fill
+    &.primary
+      flat-inverse-button($primary)

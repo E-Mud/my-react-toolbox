@@ -1,0 +1,54 @@
+@require '../colors.styl'
+@require '../typography.styl'
+@require '../depth.styl'
+
+common-button-styles()
+  min-width: 8.8rem
+  height: 3.2rem
+  line-height: (@height / 2)
+  padding-right: .8rem
+  padding-left: @padding-right
+  border-radius: .2rem
+  border: none
+  @extend .text-aligned-center
+
+  &:not([disabled])
+    cursor: pointer
+
+  &:focus
+    outline: none
+
+flat-inverse-button(bgColor)
+  common-button-styles()
+  background-color: rgba(bgColor, $mainTextOpacity)
+
+  &:not([disabled])
+    color: $mainWhiteText
+    &:hover
+      background-color: tint(bgColor, 25%)
+    &:active
+      background-color: tint(bgColor, 35%)
+
+  &[disabled]
+    color: $disabledWhiteText
+    background-color: rgba(bgColor, $disabledTextOpacity)
+
+flat-button(textColor = null)
+  common-button-styles()
+  background-color: transparent
+
+  &:not([disabled])
+    if textColor != null
+      color: rgba(textColor, $mainTextOpacity)
+    &:hover
+      background-color: rgba(0,0,0, .06)
+    &:active
+      background-color: rgba(0,0,0, .12)
+
+  &[disabled]
+    color: rgba(textColor, $disabledTextOpacity)
+
+raised-button()
+  z-depth(2)
+  &:active
+    z-depth(4)

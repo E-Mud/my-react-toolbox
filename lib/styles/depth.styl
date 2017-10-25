@@ -1,0 +1,21 @@
+$depths = {}
+
+$depths['1'] = 0 0 .2rem 0 rgba(0,0,0,.14), 0 .2rem .2rem 0 rgba(0,0,0,.12), 0 .1rem .3rem 0 rgba(0,0,0,.2)
+$depths['2'] = 0 0 .4rem 0 rgba(0,0,0,.14), 0 .3rem .4rem 0 rgba(0,0,0,.12), 0 .1rem .5rem 0 rgba(0,0,0,.2)
+$depths['3'] = 0 .3rem .3rem 0 rgba(0,0,0,.14), 0 .3rem .4rem 0 rgba(0,0,0,.12), 0 .1rem .8rem 0 rgba(0,0,0,.2)
+$depths['4'] = 0 .2rem .4rem 0 rgba(0,0,0,.14), 0 .4rem .5rem 0 rgba(0,0,0,.12), 0 .1rem 1rem 0 rgba(0,0,0,.2)
+$depths['6'] = 0 .6rem 1rem 0 rgba(0,0,0,.14), 0 .1rem 1.8rem 0 rgba(0,0,0,.12), 0 .3rem .5rem 0 rgba(0,0,0,.2)
+$depths['8'] = 0 .8rem 1rem .1rem rgba(0,0,0,.14), 0 .3rem 1.4rem .3rem rgba(0,0,0,.12), 0 .4rem 1.5rem 0 rgba(0,0,0,.2)
+$depths['9'] = 0 .9rem 1.2rem .1rem rgba(0,0,0,.14), 0 .3rem 1.6rem .2rem rgba(0,0,0,.12), 0 .5rem .6rem 0 rgba(0,0,0,.2)
+$depths['12'] = 0 1.2rem 1.7rem .2rem rgba(0,0,0,.14), 0 .5rem 2.2rem .4rem rgba(0,0,0,.12), 0 .7rem .8rem 0 rgba(0,0,0,.2)
+$depths['16'] = 0 1.6rem 2.4rem .2rem rgba(0,0,0,.14), 0 .6rem 3rem .5rem rgba(0,0,0,.12), 0 .8rem 1rem 0 rgba(0,0,0,.2)
+$depths['24'] = 0 2.4rem 3.8rem .3rem rgba(0,0,0,.14), 0 .9rem 4.6rem .8rem rgba(0,0,0,.12), 0 1.1rem 1.5rem 0 rgba(0,0,0,.2)
+
+
+z-depth(depth)
+  box-shadow: $depths['' + depth]
+
+
+for depth, shadow in $depths
+  .z-depth-{depth}
+    z-depth(depth)
