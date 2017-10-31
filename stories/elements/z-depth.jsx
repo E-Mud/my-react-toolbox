@@ -9,7 +9,7 @@ storiesOf('Depth', module)
         return (<div className="flex-container row" style={{padding: '10px'}}>
             {
                 avDepths.map((depth) => {
-                    return (<div className={'flex-container center-center z-depth-' + depth} style={boxStyle}>{depth}</div>)
+                    return (<div key={depth} className={'flex-container center-center z-depth-' + depth} style={boxStyle}>{depth}</div>)
                 })
             }
         </div>)
