@@ -54,3 +54,21 @@ button
   &.fill
     &.primary
       flat-inverse-button($primary)
+
+
+// Inputs
+input
+  font-size: 1.6rem
+
+  &:focus, &:hover:not([disabled]), &.invalid
+    border-bottom-width: .2rem
+    padding-bottom: .7rem
+
+  &:focus
+    input-border($primary)
+
+  &:hover:not(:focus):not(.invalid):not([disabled])
+    input-border($secondaryText)
+
+  &.invalid
+    input-border($warn)

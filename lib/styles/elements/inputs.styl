@@ -1,0 +1,40 @@
+@require '../colors.styl'
+
+input-border(borderColor)
+  border-bottom-color: borderColor
+
+input
+  display: block
+  width: 100%
+  border: none
+  background-color: transparent
+  font: inherit
+  color: $mainText
+  padding: .8rem 0
+  line-height: 1
+  height: 1em
+
+  border-bottom: .1rem solid $disabledText
+
+  &[disabled]
+    border-bottom-style: dashed
+
+  &:focus
+    outline: none
+
+::-webkit-input-placeholder /* WebKit, Blink, Edge */
+    color: $disabledText;
+
+:-moz-placeholder /* Mozilla Firefox 4 to 18 */
+   color: $disabledText;
+   opacity:  1;
+
+::-moz-placeholder /* Mozilla Firefox 19+ */
+   color: $disabledText;
+   opacity:  1;
+
+:-ms-input-placeholder /* Internet Explorer 10-11 */
+   color: $disabledText;
+
+::-ms-input-placeholder /* Microsoft Edge */
+   color: $disabledText;
