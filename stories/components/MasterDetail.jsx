@@ -3,8 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action, decorateAction } from '@storybook/addon-actions';
 
-import { MasterDetail } from '../../dist';
-import { ConfirmDialog } from '../../dist';
+import { MasterDetail, ConfirmDialog } from '../../dist';
 
 function MdUI(props) {
     return (
