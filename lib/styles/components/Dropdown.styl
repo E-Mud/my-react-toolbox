@@ -1,0 +1,24 @@
+@require '../colors.styl'
+@require '../depth.styl'
+
+.dropdown
+  position: relative
+  display: inline-block
+
+  .dropdown-content
+    display: none
+    position: absolute
+    background-color: $white
+    min-width: 160px
+    width: 100%
+    z-depth(8)
+    z-index: 1
+
+    &.h-direction-left
+      right: 0
+
+    &.v-direction-up
+      bottom: 100%
+
+  &.open .dropdown-content
+    display: block
