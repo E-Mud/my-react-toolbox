@@ -23,52 +23,48 @@ whiteColors = {
   disabled: $disabledWhiteText
 }
 
-fonts = {
+$mainFonts = {
   light: 'Light',
   regular: 'Regular',
   medium: 'Medium',
   bold: 'Bold'
 }
 
-register-typo(darkColors, whiteColors, fonts)
+mat-text-styles()
 
 body
-  @extend .text-body-1
+  text(14, $mainTextOpacity, $mainWhiteTextOpacity, 'regular')
 
 
-.sup
-  text-light()
-
+{$darkThemeSelector}
+  background-color: $primaryDark
 
 // Buttons
 button
-  @extend .text-button
-  flat-button($black)
+  text-button()
+  flat-button()
+  
+  &.primary
+    flat-button-theme($primary)
 
   &.raised
     raised-button()
 
-  &.primary
-    flat-button($primary)
-
-  &.fill
+  &.filled, &.raised
+    filled-button()
     &.primary
-      flat-inverse-button($primary)
+      filled-button-theme($primary)
 
 
 // Inputs
 input
-  font-size: 1.6rem
-
-  &:focus, &:hover:not([disabled]), &.invalid
-    border-bottom-width: .2rem
-    padding-bottom: .7rem
+  mat-input()
 
   &:focus
-    input-border($primary)
+    mat-input-theme($mainText, $primary, 2)
 
   &:hover:not(:focus):not(.invalid):not([disabled])
-    input-border($secondaryText)
+    mat-input-theme($mainText, $secondaryText, 2)
 
   &.invalid
-    input-border($warn)
+    mat-input-theme($mainText, $warn, 2)

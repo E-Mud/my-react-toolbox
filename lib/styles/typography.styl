@@ -1,41 +1,42 @@
 @require './colors.styl'
 
-$mainFonts = {}
+$mainFonts ?= {}
+
+
+text-style(fontSize, fontFamily = null)
+  if fontSize is a 'unit'
+    font-size: unit(fontSize/10, 'rem')
+  else
+    font-size: fontSize
+
+  if fontFamily && $mainFonts[fontFamily]
+    font-family: $mainFonts[fontFamily]
+
+  if fontFamily == 'light'
+    font-weight: 300
+  else if fontFamily == 'medium'
+    font-weight: 500
+  else if fontFamily == 'bold'
+    font-weight: bold
+  else if fontFamily == 'regular'
+    font-weight: 400
+
+black-text(fontSize, opacity = $mainTextOpacity, fontFamily = null)
+  text-style(fontSize, fontFamily)
+  color: blackish(opacity)
+
+white-text(fontSize, opacity = $mainWhiteTextOpacity, fontFamily = null)
+  text-style(fontSize, fontFamily)
+  color: whitish(opacity)
+
+text(fontSize, blackOpacity = $mainTextOpacity, whiteOpacity = $mainWhiteTextOpacity, fontFamily = null)
+  text-style(fontSize, fontFamily)
+  color: blackish(blackOpacity)
+  +at-dark-theme()
+    color: whitish(whiteOpacity)
 
 html
   font-size: 62.5%
-
-body
-  font-size: 1.4rem
-  line-height: 1.4
-
-.sm-text
-  font-size: 1.2rem
-
-.l-text
-  font-size: 1.8rem
-
-h1 .xl-text
-  font-size: 2rem
-
-.text-aligned-center
-  text-align: center
-
-.text-aligned-right
-  text-align: right
-
-.white-text
-  &, &.main-text, .main-text
-    color: $mainWhiteText
-
-  &.secondary-text, .secondary-text
-    color: $secondaryWhiteText
-
-  &.disabled-text, .disabled-text, &.hint-text, .hint-text
-    color: $disabledWhiteText
-
-h1, h2, h3, h4, h5
-  margin: 0
 
 a
   text-decoration: none
@@ -44,92 +45,42 @@ p
   margin-top: 0;
   margin-bottom: 0.4rem;
 
-register-typo(darkColors, whiteColors, fonts = {})
-  $mainFonts = fonts
-  lightFont = fonts['light'] || fonts['regular']
-  boldFont = fonts['bold'] || fonts['regular']
-  mediumFont = fonts['medium'] || boldFont
+.text-aligned-center
+  text-align: center
 
-  .text-light,
+.text-aligned-right
+  text-align: right
+
+h1, h2, h3, h4, h5
+  margin: 0
+
+mat-text-styles()
   .text-display-4
-    font-weight: 300
-    if fonts['light']
-      font-family: fonts['light']
+    text(112, 54%, 70%, 'light')
 
-  .text-regular,
-  .text-display-3, .text-display-2, .text-display-1,
-  .text-headline, .text-subheading,
-  .text-body-1, .text-caption
-    font-weight: 400
-    if fonts['regular']
-      font-family: fonts['regular']
+  .text-display-3
+    text(56, 54%, 70%, 'regular')
 
-  .text-medium,
-  .text-title, .text-body-2, .text-button
-    font-weight: 500
-    if fonts['medium']
-      font-family: fonts['medium']
+  .text-display-2
+    text(45, 54%, 70%, 'regular')
 
-  .text-bold
-    font-weight: bold
-    if fonts['bold']
-      font-family: fonts['bold']
+  .text-display-1
+    text(34, 54%, 70%, 'regular')
 
-  .text-main
-    color: darkColors['main']
+  .text-headline
+    text(24, 87%, 100%, 'regular')
 
-  .text-secondary,
-  .text-display-4, .text-display-3, .text-display-2, .text-display-1
-    color: darkColors['secondary']
+  .text-title
+    text(20, 87%, 100%, 'medium')
 
-  .text-disabled, .text-hint,
+  .text-subheading
+    text(16, 87%, 100%, 'regular')
+
+  .text-body-2
+    text(14, 87%, 100%, 'medium')
+
+  .text-body-1
+    text(14, 87%, 100%, 'regular')
+
   .text-caption
-    color: darkColors['disabled']
-
-  .white-text
-    &.text-main,
-    .text-main
-      color: whiteColors['main']
-
-    &.text-secondary,
-    &.text-display-4, &.text-display-3, &.text-display-2, &.text-display-1,
-    .text-secondary,
-    .text-display-4, .text-display-3, .text-display-2, .text-display-1
-      color: whiteColors['secondary']
-
-    &.text-disabled, &.text-hint,
-    &.text-caption,
-    .text-disabled, .text-hint,
-    .text-caption
-      color: whiteColors['disabled']
-
-
-//  Sizes
-.text-display-4
-  font-size: 11.2rem
-
-.text-display-3
-  font-size: 5.6rem
-
-.text-display-2
-  font-size: 4.5rem
-
-.text-display-1
-  font-size: 3.4rem
-
-.text-headline
-  font-size: 2.4rem
-
-.text-title
-  font-size: 2rem
-
-.text-subheading
-  font-size: 1.6rem
-
-.text-body-2,
-.text-body.
-.text-button
-  font-size: 1.4rem
-
-.text-caption
-  font-size: 1.2rem
+    text(12, 54%, 70%, 'regular')

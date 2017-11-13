@@ -2,15 +2,18 @@
 @require '../typography.styl'
 @require '../depth.styl'
 
-common-button-styles()
-  min-width: 8.8rem
-  height: 3.2rem
+$buttonHeight = 3.2rem
+$buttonMinWidth = 8.8rem
+
+text-button()
+  min-width: $buttonMinWidth
+  height: $buttonHeight
   line-height: (@height / 2)
   padding-right: .8rem
   padding-left: @padding-right
   border-radius: .2rem
   border: none
-  @extend .text-aligned-center
+  text-align: center
 
   &:not([disabled])
     cursor: pointer
@@ -18,37 +21,50 @@ common-button-styles()
   &:focus
     outline: none
 
-flat-inverse-button(bgColor)
-  common-button-styles()
-  background-color: rgba(bgColor, $mainTextOpacity)
+flat-button()
+  background-color: transparent
+  text(14, 87%, 100%, 'medium')
 
   &:not([disabled])
-    color: $mainWhiteText
+    &:hover
+      background-color: blackish(6%)
+    &:active
+      background-color: blackish(12%)
+
+  &[disabled]
+    color: blackish(26%)
+    +at-dark-theme()
+      color: whitish(30%)
+
+filled-button()
+  &:not([disabled])
+    white-text(14, 100%, 'medium')
+  &[disabled]
+    white-text(14, 30%, 'medium')
+
+raised-button()
+  z-depth(2)
+  &:active
+    z-depth(4)
+
+flat-button-theme(textColor)
+  &:not([disabled])
+    color: textColor
+    +at-dark-theme()
+      color: textColor
+  &[disabled]
+    color: rgba(textColor, .26)
+    +at-dark-theme()
+      color: rgba(textColor, .26)
+
+filled-button-theme(bgColor)
+  background-color: bgColor
+
+  &:not([disabled])
     &:hover
       background-color: tint(bgColor, 25%)
     &:active
       background-color: tint(bgColor, 35%)
 
   &[disabled]
-    color: $disabledWhiteText
     background-color: rgba(bgColor, $disabledTextOpacity)
-
-flat-button(textColor = null)
-  common-button-styles()
-  background-color: transparent
-
-  &:not([disabled])
-    if textColor != null
-      color: rgba(textColor, $mainTextOpacity)
-    &:hover
-      background-color: rgba(0,0,0, .06)
-    &:active
-      background-color: rgba(0,0,0, .12)
-
-  &[disabled]
-    color: rgba(textColor, $disabledTextOpacity)
-
-raised-button()
-  z-depth(2)
-  &:active
-    z-depth(4)

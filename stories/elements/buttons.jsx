@@ -8,23 +8,21 @@ storiesOf('Button', module)
             <div>
                 <div className="flex-container" style={{padding: '10px'}}>
                     <button style={{marginRight: '10px'}}>NORMAL</button>
-                    <button className="raised" style={{marginRight: '10px'}}>RAISED</button>
                     <button style={{marginRight: '10px'}} disabled={true}>DISABLED</button>
                 </div>
                 <div className="flex-container" style={{padding: '10px'}}>
                     <button className="primary" style={{marginRight: '10px'}}>NORMAL</button>
-                    <button className="primary raised" style={{marginRight: '10px'}}>RAISED</button>
                     <button className="primary" style={{marginRight: '10px'}} disabled={true}>DISABLED</button>
                 </div>
             </div>
         )
     })
-    .add('Filled', () => {
+    .add('Raised', () => {
         return (
             <div className="flex-container" style={{padding: '10px'}}>
-                <button className="fill primary" style={{marginRight: '10px'}}>NORMAL</button>
-                <button className="fill primary raised" style={{marginRight: '10px'}}>RAISED</button>
-                <button className="fill primary" style={{marginRight: '10px'}} disabled={true}>DISABLED</button>
+                <button className="raised primary" style={{marginRight: '10px'}}>NORMAL</button>
+                <button className="filled primary" style={{marginRight: '10px'}}>NO DEPTH</button>
+                <button className="raised primary" style={{marginRight: '10px'}} disabled={true}>DISABLED</button>
             </div>
         )
     });

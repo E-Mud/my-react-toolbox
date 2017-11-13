@@ -1,18 +1,35 @@
-$black = #000000
-$white = #FFFFFF
+$black ?= #000000
+$white ?= #FFFFFF
 
-$mainTextOpacity = 0.87
-$secondaryTextOpacity = 0.54
-$disabledTextOpacity = 0.38
+blackish(op = 1)
+  rgba($black, op)
 
-$mainWhiteTextOpacity = 1
-$secondaryWhiteTextOpacity = 0.70
-$disabledWhiteTextOpacity = 0.50
+whitish(op = 1)
+  rgba($white, op)
 
-$mainText = rgba($black, $mainTextOpacity)
-$secondaryText = rgba($black, $secondaryTextOpacity)
-$disabledText = rgba($black, $disabledTextOpacity)
+$darkThemeSelector ?= '.dark-theme'
 
-$mainWhiteText = rgba($white, $mainWhiteTextOpacity)
-$secondaryWhiteText = rgba($white, $secondaryWhiteTextOpacity)
-$disabledWhiteText = rgba($white, $disabledWhiteTextOpacity)
+$mainTextOpacity ?= 0.87
+$secondaryTextOpacity ?= 0.54
+$disabledTextOpacity ?= 0.38
+
+$mainWhiteTextOpacity ?= 1
+$secondaryWhiteTextOpacity ?= 0.70
+$disabledWhiteTextOpacity ?= 0.50
+
+$mainText ?= blackish($mainTextOpacity)
+$secondaryText ?= blackish($secondaryTextOpacity)
+$disabledText ?= blackish($disabledTextOpacity)
+
+$mainWhiteText ?= whitish($mainWhiteTextOpacity)
+$secondaryWhiteText ?= whitish($secondaryWhiteTextOpacity)
+$disabledWhiteText ?= whitish($disabledWhiteTextOpacity)
+
+
+at-dark-theme(skipRoot = false)
+  if skipRoot
+    &{$darkThemeSelector}
+      {block}
+  else
+    /{$darkThemeSelector} &, &{$darkThemeSelector}
+      {block}
