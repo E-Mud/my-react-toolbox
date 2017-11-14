@@ -73,12 +73,33 @@ button
 // Inputs
 input
   mat-input()
+  mat-input-theme(blackish(87%), blackish(54%), blackish(42%))
 
-  &:focus
-    mat-input-theme($mainText, $primary, 2)
+  &[disabled]
+    mat-input-theme(blackish(38%), blackish(24%), blackish(42%))
 
-  &:hover:not(:focus):not(.invalid):not([disabled])
-    mat-input-theme($mainText, $secondaryText, 2)
+  &:not([disabled]):not(.invalid)
+    &:hover
+      mat-input-theme(blackish(87%), blackish(54%), blackish(87%), 2)
+
+    &:focus
+      mat-input-theme(blackish(87%), blackish(54%), $primary, 2)
 
   &.invalid
-    mat-input-theme($mainText, $warn, 2)
+    mat-input-theme(blackish(87%), blackish(54%), $warn, 2)
+
+  +at-dark-theme()
+    mat-input-theme(whitish(100%), whitish(70%), whitish(70%))
+
+    &[disabled]
+      mat-input-theme(whitish(50%), whitish(42%), whitish(70%))
+
+    &:not([disabled]):not(.invalid)
+      &:hover
+        mat-input-theme(whitish(100%), whitish(70%), whitish(100%), 2)
+
+      &:focus
+        mat-input-theme(whitish(100%), whitish(70%), $primary, 2)
+
+    &.invalid
+      mat-input-theme(whitish(100%), whitish(70%), $warn, 2)
