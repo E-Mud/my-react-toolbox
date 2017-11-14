@@ -2,9 +2,10 @@
 
 mat-input-theme(textColor, borderColor, borderWidth = 1)
   color: textColor
-  borderWidth = borderWidth * .1rem
-  border-bottom-width: borderWidth
-  padding-bottom: .9rem - borderWidth
+  if borderWidth != 1
+    borderWidth = borderWidth * .1rem
+    border-bottom-width: borderWidth
+    padding-bottom: .9rem - borderWidth
   border-bottom-color: borderColor
 
 mat-input()
@@ -14,6 +15,7 @@ mat-input()
   background-color: transparent
   font: inherit
   padding-top: .8rem
+  padding-bottom: @padding-top
   line-height: 1
   font-size: 1.6rem
   height: 1em

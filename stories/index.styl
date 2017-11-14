@@ -45,18 +45,29 @@ body
 // Buttons
 button
   text-button()
-  flat-button()
+
+  flat-button-theme(blackish(87%), blackish(26%), blackish(6%), blackish(12%))
+  +at-dark-theme()
+    flat-button-theme(whitish(100%), whitish(30%), whitish(6%), whitish(12%))
 
   &.primary
-    flat-button-theme($primary)
+    flat-button-theme($primary, rgba($primary, .30), blackish(6%), blackish(12%))
+    +at-dark-theme()
+      flat-button-theme($primary, rgba($primary, .30), whitish(6%), whitish(12%))
 
   &.raised
     raised-button()
 
-  &.filled, &.raised
-    filled-button()
+  &.solid, &.raised
     &.primary
-      filled-button-theme($primary)
+      solid-button-theme($primary, blackish(30%), blackish(12%), shade($primary, 6%), shade($primary, 12%))
+      +at-dark-theme()
+        solid-button-theme($primary, whitish(30%), whitish(12%), shade($primary, 6%), shade($primary, 12%))
+    &.warn
+      solid-button-theme($warn, blackish(30%), blackish(12%), shade($warn, 6%), shade($warn, 12%))
+      +at-dark-theme()
+        solid-button-theme($warn, whitish(30%), whitish(12%), shade($warn, 6%), shade($warn, 12%))
+
 
 
 // Inputs
