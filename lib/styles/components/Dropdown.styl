@@ -5,20 +5,20 @@
   position: relative
   display: inline-block
 
-  .dropdown-content
-    display: none
-    position: absolute
-    background-color: $white
-    min-width: 160px
-    width: 100%
-    z-depth(8)
-    z-index: 1
+.dropdown-content
+  display: none
+  position: absolute
+  background-color: $white
+  min-width: 160px
+  width: 100%
+  z-depth(8)
+  z-index: 1
 
-    &.h-direction-left
-      right: 0
-
-    &.v-direction-up
-      bottom: 100%
-
-  &.open .dropdown-content
+  &.open
     display: block
+
+  &.h-direction-left
+    right: 0
+
+  &.v-direction-up
+    bottom: 100%

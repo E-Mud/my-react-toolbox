@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action, decorateAction } from '@storybook/addon-actions';
 
-import { Dropdown, DropdownContent } from '../../dist';
+import { DropdownOrigin, DropdownContent } from '../../dist';
 
 class DropdownClient extends React.Component {
     constructor(props) {
@@ -15,14 +15,14 @@ class DropdownClient extends React.Component {
     render() {
         return (
             <div>
-                <Dropdown open={this.state.open}>
+                <DropdownOrigin open={this.state.open}>
                     <button className="raised primary" onClick={() => this.setState({open: !this.state.open})}>OPEN</button>
                     <DropdownContent hDirection={this.props.hDirection} vDirection={this.props.vDirection}>
                         <div>ONE</div>
                         <div>TWO</div>
                         <div>THREE</div>
                     </DropdownContent>
-                </Dropdown>
+                </DropdownOrigin>
             </div>
         )
     }
