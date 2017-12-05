@@ -1,19 +1,19 @@
 @require '../spacing.styl'
 
 .dialog
-  @extend .padding-xlarge-top
+  padded-top(3)
   .dialog-title, .dialog-body
-    @extend .padding-xlarge-horizontal
+    padded-horizontal(3)
 
   .dialog-title + .dialog-body
-    @extend .padding-small-top
-    @extend .margin-large-top
+    padded-top(0.5)
+    margined-top(2)
 
   .dialog-body
-    @extend .padding-xlarge-bottom
+    padded-bottom(3)
 
   .dialog-actions
-    @extend .padding-base
+    padded()
 
     button + button
-      @extend .margin-base-left
+      margined-left()

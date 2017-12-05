@@ -1,52 +1,6 @@
-padded(base, attr, mult)
-  padding-{attr}: base * mult
+$baseSpace ?= 0.8rem
 
-margined(base, attr, mult)
-  margin-{attr}: base * mult
-
-
-register-sizes(base, sizes)
-  for size, mult in sizes
-    .padding-{size}
-      padded(base, top, mult)
-      padded(base, right, mult)
-      padded(base, bottom, mult)
-      padded(base, left, mult)
-
-    .padding-{size}-horizontal
-      padded(base, right, mult)
-      padded(base, left, mult)
-
-    .padding-{size}-vertical
-      padded(base, top, mult)
-      padded(base, bottom, mult)
-
-    .margin-{size}
-      margined(base, top, mult)
-      margined(base, right, mult)
-      margined(base, bottom, mult)
-      margined(base, left, mult)
-
-    .margin-{size}-horizontal
-      margined(base, right, mult)
-      margined(base, left, mult)
-
-    .margin-{size}-vertical
-      margined(base, top, mult)
-      margined(base, bottom, mult)
-
-    for dir in (top right bottom left)
-      .padding-{size}-{dir}
-        padded(base, dir, mult)
-
-      .margin-{size}-{dir}
-        margined(base, dir, mult)
-
-
-
-$baseSpace = 0.8rem
-
-$sizes = {
+$sizes ?= {
   base: 1
   none: 0
   small: 0.5
@@ -55,4 +9,83 @@ $sizes = {
   huge: 4
 }
 
-register-sizes($baseSpace, $sizes)
+padded(mult = 1)
+  padding: $baseSpace * mult
+
+padded-attr(attr, mult = 1)
+  padding-{attr}: $baseSpace * mult
+
+padded-vertical(mult = 1)
+  padding-top: $baseSpace * mult
+  padding-bottom: $baseSpace * mult
+
+padded-horizontal(mult = 1)
+  padding-right: $baseSpace * mult
+  padding-left: $baseSpace * mult
+
+padded-top(mult = 1)
+  padding-top: $baseSpace * mult
+
+padded-right(mult = 1)
+  padding-right: $baseSpace * mult
+
+padded-bottom(mult = 1)
+  padding-bottom: $baseSpace * mult
+
+padded-left(mult = 1)
+  padding-left: $baseSpace * mult
+
+
+margined(mult = 1)
+  margin: $baseSpace * mult
+
+margined-attr(attr, mult = 1)
+  margin-{attr}: $baseSpace * mult
+
+margined-vertical(mult = 1)
+  margin-top: $baseSpace * mult
+  margin-bottom: $baseSpace * mult
+
+margined-horizontal(mult = 1)
+  margin-right: $baseSpace * mult
+  margin-left: $baseSpace * mult
+
+margined-top(mult = 1)
+  margin-top: $baseSpace * mult
+
+margined-right(mult = 1)
+  margin-right: $baseSpace * mult
+
+margined-bottom(mult = 1)
+  margin-bottom: $baseSpace * mult
+
+margined-left(mult = 1)
+  margin-left: $baseSpace * mult
+
+
+register-sizes()
+  for size, mult in $sizes
+    .padding-{size}
+      padded(mult)
+
+    .padding-{size}-horizontal
+      padded-horizontal(mult)
+
+    .padding-{size}-vertical
+      padded-vertical(mult)
+
+    .margin-{size}
+      margined(mult)
+
+    .margin-{size}-horizontal
+      margined-horizontal(mult)
+
+    .margin-{size}-vertical
+      margined-vertical(mult)
+
+    for dir in (top right bottom left)
+      .padding-{size}-{dir}
+        padded-attr(dir, mult)
+
+      .margin-{size}-{dir}
+        margined-attr(dir, mult)
