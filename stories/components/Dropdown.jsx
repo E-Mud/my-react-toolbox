@@ -15,9 +15,9 @@ class DropdownClient extends React.Component {
     render() {
         return (
             <div>
-                <DropdownOrigin open={this.state.open}>
+                <DropdownOrigin>
                     <button className="raised primary" onClick={() => this.setState({open: !this.state.open})}>OPEN</button>
-                    <DropdownContent hDirection={this.props.hDirection} vDirection={this.props.vDirection}>
+                    <DropdownContent open={this.state.open} hDirection={this.props.hDirection} vDirection={this.props.vDirection}>
                         <div>ONE</div>
                         <div>TWO</div>
                         <div>THREE</div>
